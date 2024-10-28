@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>プロジェクト概要</h1>
+<p>アプリケーションTimeをリファクタ＋機能ブラッシュアップしたものです（https://github.com/Rei1449/progate-hack）</p>
+<p>Timeは時間管理アプリで、エンジニアの時間効率を最大化することを目的に開発しました。</p>
 
-## Getting Started
+<h2>技術</h2>
+<ul><li> Next.js ver13</li><li>vitest</li><li> tailwind css</li></ul>
 
-First, run the development server:
+<h1>本リポジトリの環境構築</h1>
+<h2>Next.js ver13プロジェクト作成</h2>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npx create-next-app@13 timeminiapp && cd timeminiapp && npm i next@13
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h2>prettierファイル追加</h2>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+.prettierrc を root で作成
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```.prettierrc
+{
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 4
+}
+```
 
-## Learn More
+<h2>Eslintファイル編集</h2>
+.eslintrc.jsonに以下を追加しました。（console.logをエラーとして扱う）
 
-To learn more about Next.js, take a look at the following resources:
+```
+{
+    "rules": {
+        "no-console": "error",
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+                "message": "Unexpected property on console object was called"
+            }
+        ]
+    }
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h2>Vitest環境構築</h2>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom
+```
 
-## Deploy on Vercel
+<p>vitest.config.ts</p>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+export default defineConfig({
+plugins: [react()],
+test: {
+environment: 'jsdom',
+},
+})
+```
+
+package.json に test コマンドを追加
+
+```
+{
+  "scripts": {
+    ...
+    "test": "vitest"
+  }
+}
+```
+
+参考資料<br/>
+https://ja.next-community-docs.dev/docs/app/building-your-application/testing/vitest
+
+<h1>構成</h1>
+<h2>appフォルダ</h2>
+ルーティング。
+各ページのトップレベルコンポーネント
+（基本的にlayout.tsxを持たせる）
+<h2>componentsフォルダ</h2>
+処理を持たないヘッダーやサイドバー等のコンポーネントを格納。shadcn/uiコンポーネントもuiフォルダ内に格納。
+<h2>featuresフォルダ</h2>
+処理を持つコンポーネントを機能ごとにフォルダリングし格納。
+
+<h2>テストファイルに関して</h2>
+<p>テスト対象モジュールと同階層に__tests__フォルダを作成する</p>
