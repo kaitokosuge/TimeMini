@@ -42,7 +42,7 @@ npx create-next-app@13 timeminiapp && cd timeminiapp && npm i next@13
 }
 ```
 
-<h2>Vitest環境構築</h2>
+<h2>Vitest インストール</h2>
 
 ```
 npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom
@@ -75,6 +75,18 @@ package.json に test コマンドを追加
 
 参考資料<br/>
 https://ja.next-community-docs.dev/docs/app/building-your-application/testing/vitest
+
+<h2>shadcn/ui インストール</h2>
+
+ボタンコンポーネント追加
+
+```
+npx shadcn@latest init
+```
+
+```
+npx shadcn@latest add button
+```
 
 <h1>構成</h1>
 <h2>appフォルダ</h2>
