@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useTimer } from './useTimer/useTimer';
+import TimeView from './components/TimeView/TimeView';
 
 export default function Timer() {
     const {
@@ -15,7 +16,9 @@ export default function Timer() {
     } = useTimer();
     return (
         <div>
-            <p>{formatTime(seconds)}</p>
+            <div>
+                <TimeView seconds={seconds} />
+            </div>
             <button
                 onClick={() => {
                     startTimer();

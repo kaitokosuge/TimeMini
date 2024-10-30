@@ -73,8 +73,40 @@ package.json に test コマンドを追加
 }
 ```
 
+<p>カバレッジライブラリインストール</p>
+
+```
+npm i -D @vitest/coverage-v8
+```
+
+vitest.config.ts
+
+```
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  test: {
+    coverage: {
+      provider: 'v8'
+    },
+  },
+})
+```
+
+package.json
+
+```
+{
+  "scripts": {
+    ...
+    "coverage": "vitest run --coverage"
+  }
+}
+```
+
 参考資料<br/>
-https://ja.next-community-docs.dev/docs/app/building-your-application/testing/vitest
+https://ja.next-community-docs.dev/docs/app/building-your-application/testing/vitest  
+https://vitest.dev/guide/coverage
 
 <h2>shadcn/ui インストール</h2>
 
