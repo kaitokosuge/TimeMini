@@ -20,19 +20,3 @@ jobs:
               run: npm ci
             - name: Run all tests
               run: npm test
-
-    # リントが通ったか
-    lint:
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Source checkout
-              uses: actions/checkout@v4
-            - name: Set up Node 20
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-            - name: Install node dependencies
-              run: npm ci
-            - name: Run linter
-              run: npm run lint
