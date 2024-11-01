@@ -12,7 +12,7 @@ describe('useTimer', () => {
     });
 
     const { result } = renderHook(() => useTimer());
-    console.log('現在じこく', result.current.seconds);
+
     test('タイマーの開始と停止', () => {
         const { result } = renderHook(() => useTimer());
 
@@ -33,7 +33,7 @@ describe('useTimer', () => {
         expect(result.current.isActive).toBe(false);
         expect(result.current.seconds).toBe(0);
     });
-    console.log('現在じこく２', result.current.seconds);
+
     test('タイマーの一時停止と再開', () => {
         const { result } = renderHook(() => useTimer());
 
@@ -65,7 +65,6 @@ describe('useTimer', () => {
         });
         expect(result.current.seconds).toBe(8);
     });
-    console.log('現在じこく３', result.current.seconds);
 
     test('formatTimeがHH:MM:SS形式で時間を返すこと', () => {
         const { result } = renderHook(() => useTimer());
