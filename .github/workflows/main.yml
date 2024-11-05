@@ -5,7 +5,7 @@ on:
         branches: ['main']
 
 jobs:
-    # testが通ったか
+    # npm run test
     test:
         runs-on: ubuntu-latest
 

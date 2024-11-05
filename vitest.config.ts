@@ -8,6 +8,16 @@ export default defineConfig({
         coverage: {
             reporter: ['text', 'json', 'html'],
             provider: 'v8',
+            exclude: [
+                'lib/**/*',
+                '**/*.test.tsx',
+                '.next',
+                'next.config.js',
+                'postcss.config.js',
+                'tailwind.config.ts',
+                'vitest.config.ts',
+                'components/ui',
+            ],
         },
     },
 });

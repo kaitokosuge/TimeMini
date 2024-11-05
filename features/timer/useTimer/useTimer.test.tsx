@@ -11,8 +11,6 @@ describe('useTimer', () => {
         vi.useRealTimers();
     });
 
-    const { result } = renderHook(() => useTimer());
-
     test('タイマーの開始と停止', () => {
         const { result } = renderHook(() => useTimer());
 

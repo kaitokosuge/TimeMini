@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTimer } from './useTimer/useTimer';
 import TimeView from './components/TimeView/TimeView';
+import TimerButton from './components/TimerButton/TimerButton';
 
 export default function Timer() {
     const {
@@ -9,30 +10,38 @@ export default function Timer() {
         pauseTimer,
         resumeTimer,
         stopTimer,
-        formatTime,
         seconds,
         isActive,
         isPaused,
     } = useTimer();
     return (
-        <div>
-            <div>
-                <TimeView seconds={seconds} />
-            </div>
-            <button
-                onClick={() => {
-                    startTimer();
-                }}
-            >
-                開始
-            </button>
-            <button
-                onClick={() => {
-                    stopTimer();
-                }}
-            >
-                終了
-            </button>
+        <div className="text-center">
+            <TimeView seconds={seconds} />
+
+            {!isActive && (
+                <TimerButton txt={'開始'} handleClickBtn={() => startTimer()} />
+            )}
+
+            {isPaused ? (
+                <>
+                    {isActive && (
+                        <TimerButton
+                            txt={'再開'}
+                            handleClickBtn={() => resumeTimer()}
+                        />
+                    )}
+                </>
+            ) : (
+                <>
+                    {isActive && (
+                        <TimerButton
+                            txt={'一時停止'}
+                            handleClickBtn={() => pauseTimer()}
+                        />
+                    )}
+                </>
+            )}
+            <TimerButton txt={'終了'} handleClickBtn={() => stopTimer()} />
         </div>
     );
 }
