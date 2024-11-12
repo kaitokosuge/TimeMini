@@ -6,7 +6,7 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         coverage: {
-            reporter: ['text', 'json', 'html'],
+            reporter: ['text', 'json-summary', 'html'],
             provider: 'v8',
             exclude: [
                 'lib/**/*',
@@ -18,6 +18,7 @@ export default defineConfig({
                 'vitest.config.ts',
                 'components/ui',
             ],
+            reportOnFailure: true,
         },
     },
 });
