@@ -19,7 +19,6 @@ jobs:
             - name: 'Check'
               run: npm run check:all
 
-    # npm run test
     test:
         runs-on: ubuntu-latest
         timeout-minutes: 15
