@@ -4,5 +4,5 @@ import { beforeEach, expect, test, vi } from 'vitest';
 
 test('初期表示:タイマーが00:00であること', () => {
     render(<Timer />);
-    expect(screen.getByText('00:0')).toBeDefined();
+    expect(screen.getByText('00:00')).toBeDefined();
 });
