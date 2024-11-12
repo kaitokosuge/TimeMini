@@ -2,7 +2,7 @@
     "extends": "next/core-web-vitals",
     "overrides": [
         {
-            "files": ["*.tsx"],
+            "files": ["**/*.tsx"],
             "rules": {
                 "no-console": ["error"]
             }
