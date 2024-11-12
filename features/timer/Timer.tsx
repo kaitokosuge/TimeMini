@@ -14,7 +14,7 @@ export default function Timer() {
         isActive,
         isPaused,
     } = useTimer();
-    // console.log('hello');
+    console.log('hello');
     return (
         <div className="text-center">
             <TimeView seconds={seconds} />
