@@ -8,7 +8,9 @@
         "start": "next start",
         "lint": "next lint",
         "test": "vitest",
-        "coverage": "vitest run --coverage"
+        "format": "npx prettier './**/*.{tsx,ts}' --write",
+        "coverage": "vitest run --coverage",
+        "check:all": "npm run lint && npm run format"
     },
     "dependencies": {
         "@radix-ui/react-icons": "^1.3.0",

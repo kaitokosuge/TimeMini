@@ -1,12 +1,11 @@
 {
     "extends": "next/core-web-vitals",
-    "rules": {
-        "no-console": "error",
-        "no-restricted-syntax": [
-            "error",
-            {
-                "message": "Unexpected property on console object was called"
+    "overrides": [
+        {
+            "files": ["*.tsx"],
+            "rules": {
+                "no-console": ["error"]
             }
-        ]
-    }
+        }
+    ]
 }

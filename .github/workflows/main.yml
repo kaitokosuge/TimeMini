@@ -5,17 +5,35 @@ on:
         branches: ['main']
 
 jobs:
+    code-check:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20.x'
+            - uses: npm/action-setup@v3
+              name: 'Install Deps'
+              run: npm install
+            - name: 'Check'
+              run: npm check:all
+
     # npm run test
     test:
         runs-on: ubuntu-latest
+        timeout-minutes: 15
         permissions:
-            # Required to checkout the code
             contents: read
-            # Required to put a comment into the pull-request
             pull-requests: write
 
         steps:
+            - name: Checkout
             - uses: actions/checkout@v4
+
             - name: 'Install Node'
               uses: actions/setup-node@v4
               with:
@@ -25,7 +43,5 @@ jobs:
             - name: 'Test'
               run: npx vitest --coverage.enabled true
             - name: 'Report Coverage'
-              # Set if: always() to also generate the report if tests are failing
-              # Only works if you set `reportOnFailure: true` in your vite config as specified above
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2

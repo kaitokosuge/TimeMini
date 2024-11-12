@@ -25,7 +25,7 @@ npx create-next-app@13 timeminiapp && cd timeminiapp && npm i next@13
 ```
 
 <h2>Eslintファイル編集</h2>
-.eslintrc.jsonに以下を追加しました。（console.logをエラーとして扱う）
+.eslintrc.jsonに以下を追加しました。（consolelogをエラーとして扱う）
 
 ```
 {
