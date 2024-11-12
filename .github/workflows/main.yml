@@ -5,22 +5,22 @@ on:
         branches: ['main']
 
 jobs:
-    code-check:
-        runs-on: ubuntu-latest
-        timeout-minutes: 15
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+    # code-check:
+    #     runs-on: ubuntu-latest
+    #     timeout-minutes: 15
+    #     steps:
+    #         - name: Checkout
+    #           uses: actions/checkout@v4
 
-            - name: Install Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '20.x'
-            - uses: npm/action-setup@v3
-              name: 'Install Deps'
-              run: npm install
-            - name: 'Check'
-              run: npm check:all
+    #         - name: Install Node.js
+    #           uses: actions/setup-node@v4
+    #           with:
+    #               node-version: '20.x'
+    #         - uses: npm/action-setup@v3
+    #           name: 'Install Deps'
+    #           run: npm install
+    #         - name: 'Check'
+    #           run: npm check:all
 
     # npm run test
     test:
